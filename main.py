@@ -5,7 +5,7 @@
 """Send your tasks directly to the calendar rather than todo list.
 
 tocal Read http://this.link                # Add 30 min event to the first empty slot starting from tomorrow.
-tocal +3 @15 Check something really quick  # Add 15 min event to the first empty slot starting from 3 days in future.
+tocal +3 /15 Check something really quick  # Add 15 min event to the first empty slot starting from 3 days in future.
 
 TODO Handle OOO.
 TODO Enable Autopilot.
@@ -32,7 +32,7 @@ DEFAULT_OFFSET = 1  # days
 MAX_OFFSET_DRIFT = 7  # days
 
 
-DURATION_RE = re.compile(r"@(\d+)")
+DURATION_RE = re.compile(r"/(\d+)")
 OFFSET_RE = re.compile(r"\+(\d+)")
 
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
@@ -158,6 +158,7 @@ def main():
             free_start = free_start.replace(hour=OFFICE_HOURS_START) + ONE_DAY
 
     create_event(service, summary, free_start, duration)
+    print("{} on {}".format(summary, free_start))
 
 
 if __name__ == "__main__":
