@@ -115,10 +115,6 @@ def create_event(service, summary, start, duration):
 
 
 def main():
-    """Shows basic usage of the Google Calendar API.
-    Prints the start and name of the next 10 events on the user's calendar.
-    """
-
     argv = sys.argv[1:]  # drop script name
 
     duration, argv = get_int_arg(argv, DURATION_RE, DEFAULT_DURATION)
