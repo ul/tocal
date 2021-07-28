@@ -124,6 +124,9 @@ def main():
     duration = datetime.timedelta(minutes=duration)
     duration_seconds = duration.total_seconds()
     free_start = offset_to_datetime(offset)
+    now = datetime.datetime.now().astimezone()
+    if free_start < now:
+        free_start = now
 
     service = get_service()
 
