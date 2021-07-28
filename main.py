@@ -104,6 +104,7 @@ def get_int_arg(argv, pattern, default):
 def create_event(service, summary, start, duration):
     event = {
         "summary": summary,
+        "description": summary,
         "start": {
             "dateTime": datetime_to_gdate(start),
         },
